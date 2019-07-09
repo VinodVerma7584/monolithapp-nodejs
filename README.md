@@ -36,4 +36,3 @@ $ node server.js
 
 Get All User list : http://localhost:3000/api/users
 Get All Thread list : http://localhost:3000/api/threads
-
