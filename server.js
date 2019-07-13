@@ -10,32 +10,22 @@ app.use(function *(next){
   console.log('%s %s - %s', this.method, this.url, ms);
 });
 
-router.get('/api/users', function *(next) {
-  this.body = db.users;
+router.get('/api/avengers', function *(next) {
+  this.body = db.avengers;
 });
 
-router.get('/api/users/:userId', function *(next) {
-  const id = parseInt(this.params.userId);
-  this.body = db.users.find((user) => user.id == id);
+router.get('/api/avengers/:avengersId', function *(next) {
+  const id = parseInt(this.params.avengersId);
+  this.body = db.avengers.find((avengers) => avengers.id == id);
 });
 
-router.get('/api/threads', function *() {
-  this.body = db.threads;
+router.get('/api/marvels', function *(next) {
+  this.body = db.marvels;
 });
 
-router.get('/api/threads/:threadId', function *() {
-  const id = parseInt(this.params.threadId);
-  this.body = db.threads.find((thread) => thread.id == id);
-});
-
-router.get('/api/posts/in-thread/:threadId', function *() {
-  const id = parseInt(this.params.threadId);
-  this.body = db.posts.filter((post) => post.thread == id);
-});
-
-router.get('/api/posts/by-user/:userId', function *() {
-  const id = parseInt(this.params.userId);
-  this.body = db.posts.filter((post) => post.user == id);
+router.get('/api/marvels/:marvelsId', function *(next) {
+  const id = parseInt(this.params.marvelsId);
+  this.body = db.marvels.find((marvels) => marvels.id == id);
 });
 
 router.get('/api/', function *() {
@@ -50,3 +40,5 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 
 app.listen(3000);
+
+console.log('Worker started');
